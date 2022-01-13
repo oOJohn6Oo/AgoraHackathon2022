@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "io.agora.example.familyfame"
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures{
+        viewBinding true
+    }
+    splits {
+        abi {
+            enable true
+            reset()
+//            include 'armeabi-v7a', 'arm64-v8a'
+            include 'arm64-v8a'
+            universalApk true
+        }
+    }
+}
+
+dependencies {
+
+    // Agora
+    implementation('com.github.agorabuilder:agora-full-preview:4.0.0.preview.3')
+    implementation("com.github.agorabuilder:rtm-sdk:1.4.9")
+    // Google
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.activity:activity-ktx:1.4.0")
+    implementation("androidx.fragment:fragment-ktx:1.4.0")
+    implementation('com.google.code.gson:gson:2.8.9')
+
+    implementation("com.google.android.material:material:1.4.0")
+}

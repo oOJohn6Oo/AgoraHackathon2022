@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/splashFragment">
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="io.agora.example.familygame.presentation.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_roomListFragment"
+            app:destination="@id/roomListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomListFragment"
+        android:name="io.agora.example.familygame.presentation.list.RoomListFragment"
+        android:label="RoomListFragment"
+        tools:layout="@layout/fragment_room_list">
+        <action
+            android:id="@+id/action_roomListFragment_to_roomFragment"
+            app:destination="@id/roomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomFragment"
+        android:name="io.agora.example.familygame.presentation.room.RoomFragment"
+        android:label="RoomFragment">
+        <action
+            android:id="@+id/action_roomFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="io.agora.example.familygame.presentation.game.GameFragment"
+        android:label="GameFragment" />
+</navigation>

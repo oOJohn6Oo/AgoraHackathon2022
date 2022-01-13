@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Family Game</string>
+
+    <string name="agora_app_id"/>
+    <string name="agora_app_token"/>
+
+<!--    Splash-->
+    <string name="error_desc">RTM初始化出错</string>
+    <string name="error_happened">%s出错,请检查日志</string>
+
+
+<!--    List-->
+    <string name="room_list_name">🏠：%s\n😀：%s</string>
+    <string name="list_empty">暂无任何房间</string>
+<!--    Create-->
+    <string name="create_room">创建房间</string>
+    <string name="join_room">加入房间</string>
+    <string name="please_input_room_name">请输入房间名称</string>
+    <string name="please_input_user_name">请输入昵称</string>
+    <string name="input_invalid">输入不合法</string>
+
+<!--    Room-->
+    <string name="start">开始</string>
+    <string name="end">结束</string>
+    <string name="desc_mic">点击禁用或启用麦克风</string>
+    <string name="current_people_count">当前人数 %d/%d</string>
+    <string name="game_list">游戏列表</string>
+
+    <string name="alert">提示</string>
+    <string name="user_sure_to_exit">确定退出吗？</string>
+    <string name="admin_sure_to_exit">您是房主，结束游戏将会删除本房间，是否确认退出？</string>
+    <string name="start_alert_message">将会有%d人随机分为%d组进行[%s]游戏\n是否确认继续？</string>
+
+<!--    Game-->
+    <string name="game_end_alert">游戏结束，%d组获胜,用时 %d ms，恭喜！！！</string>
+    <string name="game_start_alert">距离游戏开始还有%d秒</string>
+</resources>

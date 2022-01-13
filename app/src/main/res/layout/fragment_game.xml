@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--        背景-->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/bgd_fg_room"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bgd_game"
+            android:focusable="false"
+            app:strokeColor="#E4A64A"
+            app:strokeWidth="5dp" />
+
+        <!--        广场-->
+        <FrameLayout
+            android:id="@+id/playground_fg_game"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!--        汉诺塔-->
+        <io.agora.example.familygame.view.Hanoi
+            android:id="@+id/game_fg_game"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:paddingHorizontal="@dimen/space_normal"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/alert_message_fg_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            app:elevation="0dp"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:backgroundTint="?attr/scrimBackground"
+            app:layout_constraintBottom_toBottomOf="@id/game_fg_game"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/game_fg_game"
+            app:shapeAppearance="@style/roundStyle"
+            tools:text="@string/app_name" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/space_normal"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextureView
+                android:id="@+id/host_camera_fg_game"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:id="@+id/game_area_fg_game"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/space_big"
+            android:background="@drawable/ic_game_area"
+            android:backgroundTint="@color/purple_500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/game_fg_game" />
+        <!--        围栏-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@android:color/holo_red_dark"
+            app:layout_constraintBottom_toTopOf="@id/waiting_area_fg_game" />
+        <!--        等候区-->
+        <View
+            android:id="@+id/waiting_area_fg_game"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="#44000000"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    底部弹窗-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_sheet_fg_game"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        tools:visibility="gone">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_mic_fg_game"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:checkable="true"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:backgroundTint="@android:color/transparent"
+            app:icon="@drawable/ic_mic"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_camera_fg_game"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:checkable="true"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:backgroundTint="@android:color/transparent"
+            app:icon="@drawable/ic_camera"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:layout_constraintStart_toEndOf="@id/btn_mic_fg_game"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/drag_fg_game"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            app:backgroundTint="@android:color/transparent"
+            app:icon="@drawable/ic_arrow_down"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconSize="42dp"
+            app:iconTint="?attr/colorSurface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_fg_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/btn_mic_fg_game"
+            app:tabIndicatorFullWidth="false"
+            tools:backgroundTint="@color/purple_500" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager_fg_game"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="?attr/colorSurface"
+            app:layout_constraintTop_toBottomOf="@id/tab_fg_game" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
