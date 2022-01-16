@@ -45,7 +45,6 @@ class RoomListViewModel(private val client: RtmClient) : ViewModel() {
                         }
                     }
                     _roomList.postValue(resList)
-                    "post".log()
                 }
 
                 override fun onFailure(p0: ErrorInfo?) {

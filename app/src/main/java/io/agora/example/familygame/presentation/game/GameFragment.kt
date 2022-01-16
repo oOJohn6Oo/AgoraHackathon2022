@@ -42,7 +42,7 @@ class GameFragment : Fragment() {
 
     companion object {
         const val GROUP_KEY = "GROUP"
-        const val avatarSize = 36
+        const val avatarSize = 72
     }
 
     private var _mBinding: FragmentGameBinding? = null

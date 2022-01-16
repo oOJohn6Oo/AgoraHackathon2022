@@ -61,7 +61,7 @@ class GameViewModel(
     private var gameEnd = false
 
     init {
-        viewModelScope.launch {
+        MainScope().launch {
             withContext(Dispatchers.IO) {
                 if (amHost) myGroup = 0
                 else
@@ -135,6 +135,7 @@ class GameViewModel(
             currentRTMChannel =
                 rtmClient.createChannel("$myGroup-${previousRoom.roomId}", GameRTMChannelListener())
             currentRTMChannel.join(null)
+            "joinRTMChannel:sdklf".log()
         }
     }
 
@@ -172,7 +173,7 @@ class GameViewModel(
     }
 
     fun switchGroup(pageIndex: Int) {
-        viewModelScope.launch {
+        GlobalScope.launch {
             withContext(Dispatchers.IO) {
                 updateMuteRule()
                 myGroup = pageIndex

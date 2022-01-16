@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import io.agora.example.familygame.FragmentActivityFactory
 import io.agora.example.familygame.GlobalViewModel
 import io.agora.example.familygame.R
-import io.agora.example.familygame.util.log
 
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {

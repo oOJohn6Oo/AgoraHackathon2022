@@ -1,6 +1,7 @@
 package io.agora.example.familygame.presentation.room
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.NumberPicker
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +23,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.chip.Chip
 import io.agora.example.familygame.GlobalViewModel
 import io.agora.example.familygame.R
 import io.agora.example.familygame.bean.LocalUser
@@ -53,7 +54,7 @@ class RoomFragment : Fragment() {
     }
 
     // Cache my own view
-    private var myView: Chip? = null
+    private var myView: TextView? = null
     private var currentPeopleCount = 0
 
     override fun onCreateView(
@@ -176,7 +177,7 @@ class RoomFragment : Fragment() {
         }
 
         observe(roomViewModel.moveOp) {
-            mBinding.playgroundFgRoom.findViewWithTag<Chip>(it.id)?.let { v ->
+            mBinding.playgroundFgRoom.findViewWithTag<TextView>(it.id)?.let { v ->
                 "moveOP".log()
                 if (it.name.isEmpty()) {
                     mBinding.playgroundFgRoom.removeView(v)
@@ -192,7 +193,7 @@ class RoomFragment : Fragment() {
             currentPeopleCount = it.size
             mBinding.peopleCountFgRoom.text = getString(R.string.current_people_count, currentPeopleCount, 24)
             it.forEach { u ->
-                var view: Chip? = mBinding.playgroundFgRoom.findViewWithTag(u.userId)
+                var view: TextView? = mBinding.playgroundFgRoom.findViewWithTag(u.userId)
                 if (view == null) {
                     view = createAvatar(u)
                     mBinding.playgroundFgRoom.addView(view)
@@ -269,7 +270,7 @@ class RoomFragment : Fragment() {
 
         // Gather all player
         mBinding.playgroundFgRoom.forEach {
-            if (it is Chip)
+            if (it is TextView)
                 players.add(LocalUser(it.text.toString(), it.tag as Int))
         }
         // 10 / 4 = 2 .. 2
@@ -306,14 +307,17 @@ class RoomFragment : Fragment() {
         v.animate().translationX(finalX).translationY(finalY).start()
     }
 
-    private fun createAvatar(u: LocalUser): Chip = Chip(requireContext()).apply {
+    private fun createAvatar(u: LocalUser): TextView = TextView(requireContext()).apply {
         // Make self differ from other
+        setTextColor(Color.WHITE)
         if (u.userId == GameConstants.localUser.userId) {
-            isChecked = true
+            setTextColor(Color.RED)
             myView = this
         }
+        this.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0, R.drawable.ic_xiaoren)
 
         tag = u.userId
+        textSize = 16f
         text = u.userName
 
         // can not be touched

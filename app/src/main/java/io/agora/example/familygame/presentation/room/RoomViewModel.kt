@@ -19,8 +19,6 @@ class RoomViewModel(
     private val rtmClient: RtmClient,
     private val currentRoom: RoomInfo
 ) : ViewModel() {
-
-
     private val currentPos = MoveBean(GameConstants.localUser, 0, 0)
     private val currentChannel: RtmChannel
     private val amHost: Boolean = currentRoom.userId == GameConstants.localUser.userId
